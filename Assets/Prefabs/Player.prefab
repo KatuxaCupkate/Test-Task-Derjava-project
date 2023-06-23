@@ -116,6 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637253632}
   - component: {fileID: 637253633}
+  - component: {fileID: 120711972}
   m_Layer: 3
   m_Name: AttackPointHead
   m_TagString: Untagged
@@ -154,6 +155,18 @@ CircleCollider2D:
   m_Offset: {x: -0.0679605, y: 0}
   serializedVersion: 2
   m_Radius: 0.28101707
+--- !u!114 &120711972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637253631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1616da53a3d8b74ba9523dd5c407367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980754621
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  deathDelay: 1
+  deathDelay: 3
   dethAudioSource: {fileID: 0}
 --- !u!114 &1794708649032401774
 MonoBehaviour:
@@ -826,7 +839,6 @@ MonoBehaviour:
   - {fileID: 0}
   borzotaIncr: 20
   borzotaDecr: 100
-  isAttacking: 0
 --- !u!1 &5558715307813847444
 GameObject:
   m_ObjectHideFlags: 0

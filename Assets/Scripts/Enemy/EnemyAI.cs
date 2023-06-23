@@ -20,11 +20,11 @@ public class EnemyAI : MonoBehaviour
     int currentWaypoint = 0;
     int hitCount = 0;
     bool reachEndOfPath = false;
-   
+
 
     Seeker seeker;
     Rigidbody2D rb;
-  
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         goul = GetComponent<Goul>();
         animator = GetComponent<Animator>();
-       
+
         InvokeRepeating("UpdatePath", 0, .5f);
     }
 
@@ -50,34 +50,24 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
-    
+
 
     void Update()
     {
+          FollowTheTarget();
+
         goul.LookAtPlayer();
-        FollowTheTarget();
 
         cooldownTimer += Time.deltaTime;
 
-        if (reachEndOfPath && hitCount < 2)
+        if (reachEndOfPath)
         {
             animator.SetTrigger("GoulStop");
 
-            if (cooldownTimer >= attackCooldown)
-            {
-                cooldownTimer = 0;
-                animator.SetTrigger("Attack");
-                hitCount++;
-
-            }
+            AttackOnReachEndOfPath();
+            
         }
-
-        if (reachEndOfPath && hitCount >= 2)
-        {
-            animator.SetTrigger("TwoHandAttack");
-            hitCount = 0;
-        }
-
+        
 
     }
 
@@ -86,7 +76,7 @@ public class EnemyAI : MonoBehaviour
 
         if (path == null)
             return;
-        if (currentWaypoint >= path.vectorPath.Count)
+        if (currentWaypoint == path.vectorPath.Count)
         {
             reachEndOfPath = true;
             return;
@@ -95,12 +85,13 @@ public class EnemyAI : MonoBehaviour
         {
             reachEndOfPath = false;
         }
-        
+
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
-        
+
         rb.AddForce(force);
+
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -110,6 +101,19 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-   
+    void AttackOnReachEndOfPath()
+    {
+        if (cooldownTimer >= attackCooldown && hitCount < 2)
+        {
+            cooldownTimer = 0;
+            animator.SetTrigger("Attack");
+            hitCount++;
+        }
+        else if (reachEndOfPath && hitCount >= 2)
+        {
+            animator.SetTrigger("TwoHandAttack");
+            hitCount = 0;
+        }
+    }
 
 }

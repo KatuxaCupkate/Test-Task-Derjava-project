@@ -7,7 +7,7 @@ public class Goul : MonoBehaviour
     public Transform player;
 
     public bool isFlipped = false;
-    public float seenRange = 10f;
+    public float seenRange = 5f;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -50,11 +50,8 @@ public class Goul : MonoBehaviour
     {
         if (Vector2.Distance(player.position, rb.position) <= seenRange)
         {
-            rb.WakeUp();
             animator.SetTrigger("PlayerSeeGopnik");
         }
-        else
-        { rb.Sleep(); }
     }
 
 }

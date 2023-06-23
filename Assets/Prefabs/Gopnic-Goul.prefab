@@ -233,12 +233,12 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.5
+  m_LinearDrag: 2.88
   m_AngularDrag: 1.96
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 2
+  m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7357980881668829959
@@ -254,7 +254,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26562548, y: -0.5644541}
+  m_Offset: {x: 0.08155912, y: -0.5856925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -265,7 +265,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0999959, y: 2.1210918}
+  m_Size: {x: 0.73186314, y: 2.078615}
   m_EdgeRadius: 0
 --- !u!114 &7357980881668829960
 MonoBehaviour:
@@ -319,7 +319,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1293987342289455354, guid: 1419b287f94274e47ad6604f1bab83ed, type: 3}
   goulPrefab: {fileID: 7748751915092702657, guid: 24645dbf85980fe4296dddc04675105d, type: 3}
   spriteRenderer: {fileID: 7357980881668829962}
-  spawnPos: {fileID: 2184995890583426122, guid: 512aa65a17612c2449e4141ad3c9b69f, type: 3}
+  spawnPos: {fileID: 0}
   getDamage: 0
 --- !u!114 &75650420
 MonoBehaviour:
@@ -334,9 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  attackCooldown: 1
+  attackCooldown: 2
   cooldownTimer: Infinity
-  speed: 240
+  speed: 350
   nextWayPointDistance: 2
 --- !u!114 &75650421
 MonoBehaviour:

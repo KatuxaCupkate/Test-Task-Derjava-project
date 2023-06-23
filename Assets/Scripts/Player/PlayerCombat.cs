@@ -158,7 +158,7 @@ public class PlayerCombat : MonoBehaviour
         {
             currentPivo = 0;
         }
-        else if (currBorzota <= 150)
+        else if (currBorzota > 100)
         {
             currentPivo = 1;
         }

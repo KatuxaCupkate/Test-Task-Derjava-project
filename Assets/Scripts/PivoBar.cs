@@ -39,13 +39,7 @@ public class PivoBar : MonoBehaviour
         }
     }
      
-     public void FillPivo(int hitCounter)
-    {
-        hitCounter++;
-        if (hitCounter == 6)
-            hitCounter = 0;
-        SetPivoImage((PivoBar.PivoStatus)hitCounter);
-    }
+     
 
     public enum PivoStatus
     {

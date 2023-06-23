@@ -10,7 +10,7 @@ public class HeadAttackCollision : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<GoulHealth>().TakeDamage(100);
-            collision.rigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Goul>().isFlipped ? -10 : 10, collision.transform.position.y);
+            collision.rigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Goul>().isFlipped ? -15 : 15, collision.transform.position.y);
            
         }
     }

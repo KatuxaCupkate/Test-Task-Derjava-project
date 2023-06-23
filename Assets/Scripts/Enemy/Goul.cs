@@ -22,10 +22,8 @@ public class Goul : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(player.position, rb.position) <= seenRange)
-        {
-            animator.SetTrigger("PlayerSeeGopnik");
-        }
+        WaitForPlayerSeeGopnic();
+       
     }
 
 
@@ -48,5 +46,15 @@ public class Goul : MonoBehaviour
         }
     }
      
+    void WaitForPlayerSeeGopnic()
+    {
+        if (Vector2.Distance(player.position, rb.position) <= seenRange)
+        {
+            rb.WakeUp();
+            animator.SetTrigger("PlayerSeeGopnik");
+        }
+        else
+        { rb.Sleep(); }
+    }
 
 }

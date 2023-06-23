@@ -17,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private CircleCollider2D headColl;
     private PlayerControllerChat player;
     private PlayerLife life;
-  
+
 
     [SerializeField] private float attackRangeUlta = 1.89f;
     [SerializeField] private float attackRangeHead = 0.25f;
@@ -31,15 +31,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PivoBar[] pivoBarScript; // pivko referens script
 
     private int smallDamage = 30;
-    private int midleDamage = 100;
     private int ultDamage = 200;
 
     public float borzotaIncr = 20;
     public float borzotaDecr = 100;
-
-
-    private bool headAttack = false;
-    public bool isAttacking = false;
 
     private float attackHeadVel = 10f;
 
@@ -68,30 +63,28 @@ public class PlayerCombat : MonoBehaviour
                 animator.SetTrigger("AttackSmall");
                 // Cooldown for small attack
                 nextAttackTime = Time.time + 1f / attackRate;
-                isAttacking = true;
+
             }
-            else 
-                isAttacking = false;
+
+
         }
 
         AttackHead();
 
         if (Input.GetButtonDown("Fire3") && borzota >= borzotaDecr && !life.isDead)
         {
-            isAttacking = true;
+
             animator.SetTrigger("Ulta");
             pivoBarScript[currentPivo].SetPivoImage(PivoBar.PivoStatus.Empty);
             borzota -= borzotaDecr;
         }
-        else
-            isAttacking = false;
-       
-       
+
+
     }
     //  Set at animation "Attack"
     void Attack()
     {
-        
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -108,7 +101,7 @@ public class PlayerCombat : MonoBehaviour
                 hitCounter++;
                 if (hitCounter == 6)
                     hitCounter = 0;
-                pivoBarScript[currentPivo].SetPivoImage((PivoBar.PivoStatus)hitCounter); 
+                pivoBarScript[currentPivo].SetPivoImage((PivoBar.PivoStatus)hitCounter);
             }
         }
 
@@ -119,17 +112,12 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && borzota >= borzotaDecr && !life.isDead)
         {
-            isAttacking = true;
-
             pivoBarScript[currentPivo].SetPivoImage(PivoBar.PivoStatus.Empty);
             borzota -= borzotaDecr;
-
             animator.SetTrigger("AttackHead");
-            headAttack = true;
 
         }
-        else
-            isAttacking = false;
+
     }
 
     // Ulta set in animation Ulta 
@@ -143,20 +131,9 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<GoulHealth>().TakeDamage(ultDamage);
 
         }
-        
+
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Use collision for head Attack damage
-        if (collision.collider.CompareTag("Enemy") && headAttack)
-        {
-            collision.gameObject.GetComponent<GoulHealth>().TakeDamage(midleDamage);
-            collision.rigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Goul>().isFlipped ? -10 : 10, collision.transform.position.y);
-            headAttack = false;
-        }
-    }
 
 
     private void OnDrawGizmosSelected()
@@ -176,11 +153,12 @@ public class PlayerCombat : MonoBehaviour
     // Update current pivko Index 
     private void UpdateCurrentPivko(float currBorzota)
     {
+
         if (currBorzota >= 200)
         {
             currentPivo = 0;
         }
-        else if (currBorzota >= 150)
+        else if (currBorzota <= 150)
         {
             currentPivo = 1;
         }
@@ -188,18 +166,6 @@ public class PlayerCombat : MonoBehaviour
         {
             currentPivo = 2;
         }
-        //switch (currBorzota)
-        //  {
-        //      case 300and >=200:
-        //          currentPivo = 0;
-        //          break;
-        //      case >=200 :
-        //          currentPivo = 1;
-        //          break;
-        //      case <=150:
-        //          currentPivo = 2;
-        //          break;
 
-        //  }
     }
 }

@@ -255,5 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  attackCooldown: 2
+  cooldownTimer: Infinity
   speed: 250
   nextWayPointDistance: 2

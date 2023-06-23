@@ -7,10 +7,11 @@ public class PivoBar : MonoBehaviour
 {
     [SerializeField] private Sprite[] fillPivko;
     public Image pivoImage;
+    
     private void Awake()
     {
         pivoImage = GetComponent<Image>();
-
+        
     }
 
     public void SetPivoImage(PivoStatus pivo)
@@ -37,6 +38,15 @@ public class PivoBar : MonoBehaviour
                 break;
         }
     }
+     
+     public void FillPivo(int hitCounter)
+    {
+        hitCounter++;
+        if (hitCounter == 6)
+            hitCounter = 0;
+        SetPivoImage((PivoBar.PivoStatus)hitCounter);
+    }
+
     public enum PivoStatus
     {
         Empty,

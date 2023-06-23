@@ -267,6 +267,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &75650411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7357980881668829958, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+  m_PrefabInstance: {fileID: 7357980881416043282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &75650420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75650411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d376c032b3030584e8738957bd088163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 315097193}
+  speed: 240
+  nextWayPointDistance: 2
+--- !u!114 &75650421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75650411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &98900967
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +438,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &120711969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 637253631, guid: 46a30396402b6d54ba8d0ae9a0e1e384, type: 3}
+  m_PrefabInstance: {fileID: 1794708649322332954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &120711972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120711969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1616da53a3d8b74ba9523dd5c407367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &136245659
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &309954190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3789,6 +3854,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 637253633, guid: 46a30396402b6d54ba8d0ae9a0e1e384, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794708649032401769, guid: 46a30396402b6d54ba8d0ae9a0e1e384, type: 3}
+      propertyPath: deathDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1794708649032401774, guid: 46a30396402b6d54ba8d0ae9a0e1e384, type: 3}
       propertyPath: pivoBarScript.Array.data[0]
       value: 
@@ -3915,6 +3988,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7357980881668829956, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357980881668829956, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357980881668829956, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357980881668829956, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7357980881668829958, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
       propertyPath: m_Name
       value: Gopnic-Goul
@@ -3923,6 +4012,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 315097193}
+    - target: {fileID: 7357980881668829962, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7357980881668829963, guid: 5412cf9e396f5f4458e6040491274503, type: 3}
       propertyPath: m_RootOrder
       value: 9

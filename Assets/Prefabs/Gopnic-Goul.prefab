@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 7357980881668829960}
   - component: {fileID: 7357980881668829961}
   - component: {fileID: 7357980881668829966}
+  - component: {fileID: 75650420}
+  - component: {fileID: 75650421}
   m_Layer: 8
   m_Name: Gopnic-Goul
   m_TagString: Enemy
@@ -185,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1415597561
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 98848e2abe1e3be44a2cbffe4739ffc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -230,13 +232,13 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
-  m_LinearDrag: 1.75
-  m_AngularDrag: 2.08
-  m_GravityScale: 3
+  m_Mass: 1
+  m_LinearDrag: 1.5
+  m_AngularDrag: 1.96
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7357980881668829959
@@ -319,3 +321,48 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7357980881668829962}
   spawnPos: {fileID: 2184995890583426122, guid: 512aa65a17612c2449e4141ad3c9b69f, type: 3}
   getDamage: 0
+--- !u!114 &75650420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357980881668829958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d376c032b3030584e8738957bd088163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  attackCooldown: 1
+  cooldownTimer: Infinity
+  speed: 240
+  nextWayPointDistance: 2
+--- !u!114 &75650421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357980881668829958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

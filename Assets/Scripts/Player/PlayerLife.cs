@@ -8,7 +8,8 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] public float health { get; private set; }
     [SerializeField] public bool isDead = false;
-    private Collider2D colliderPlayer;
+    private BoxCollider2D colliderPlayer;
+    private CircleCollider2D circleCollider;
     private Rigidbody2D rb;
     private Animator animator;
     public float deathDelay = 1.0f;
@@ -21,6 +22,7 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         colliderPlayer = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         health = 300f;
     }
 
@@ -31,9 +33,9 @@ public class PlayerLife : MonoBehaviour
         // dethAudioSource.Play();
         isDead = true;
         animator.SetTrigger("Death");
-        rb.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero; 
         colliderPlayer.enabled = false;
-
+     
     }
 
     private void ReloadLevel()

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] public float health { get; private set; }
     [SerializeField] public bool isDead = false;
     private BoxCollider2D colliderPlayer;
-    private CircleCollider2D circleCollider;
+
+    [SerializeField] private CinemachineImpulseSource  impulseSource;
+   
     private Rigidbody2D rb;
     private Animator animator;
     public float deathDelay = 1.0f;
@@ -22,7 +25,7 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         colliderPlayer = GetComponent<BoxCollider2D>();
-        circleCollider = GetComponent<CircleCollider2D>();
+       
         health = 300f;
     }
 
@@ -35,15 +38,14 @@ public class PlayerLife : MonoBehaviour
         animator.SetTrigger("Death");
         rb.velocity = Vector2.zero; 
         colliderPlayer.enabled = false;
+        CameraShakeManager.instance.CameraShake(impulseSource);
      
     }
 
-    private void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    
     public void GetDamage(float damage, string damageType)
     {
+        CameraShakeManager.instance.CameraShake(impulseSource);
         health -= damage;
 
         animator.SetTrigger(damageType);

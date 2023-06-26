@@ -1,31 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Goul : MonoBehaviour
 {
     public Transform player;
-
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+   
     public bool isFlipped = false;
-    public float seenRange = 5f;
-    private Rigidbody2D rb;
-    private Animator animator;
+   
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-       
-        animator = GetComponent<Animator>();
+      
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
-
-    private void Update()
-    {
-        WaitForPlayerSeeGopnic();
-       
-    }
-
 
     public void LookAtPlayer()
     {
@@ -46,12 +38,6 @@ public class Goul : MonoBehaviour
         }
     }
      
-    void WaitForPlayerSeeGopnic()
-    {
-        if (Vector2.Distance(player.position, rb.position) <= seenRange)
-        {
-            animator.SetTrigger("PlayerSeeGopnik");
-        }
-    }
+   
 
 }

@@ -34,6 +34,7 @@ public class GoulHealth : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+   
     private void SpawnNewGoul()
     {
         Instantiate(goulPrefab, spawnPos.position, spawnPos.rotation);

@@ -21,7 +21,7 @@ public class PlayerControllerChat : MonoBehaviour
     [SerializeField] private LayerMask  groundLayer;
 
     [SerializeField] private float climbForce = 5.0f;
-    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float speed = 7.0f;
     [SerializeField] private float jumpForce = 5.0f;
 
     [SerializeField] private Collider2D m_CrouchDisableCollider;
@@ -34,6 +34,7 @@ public class PlayerControllerChat : MonoBehaviour
     
     private bool isGround;
     private bool isDead;
+    private bool freezed;
     private bool isCrouching;
     private bool isDownWalk;
     private bool isPullingUp;
@@ -62,6 +63,7 @@ public class PlayerControllerChat : MonoBehaviour
     {
         // Check if the character is grounded
         isGround = Physics2D.IsTouchingLayers(characterCollider, groundLayer);
+
         isDead = playerLife.isDead;
         
         
@@ -78,7 +80,7 @@ public class PlayerControllerChat : MonoBehaviour
 
     void Update()
     {
-        if (!isDead)
+        if (!isDead && !freezed)
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
             PlayerMove();
@@ -88,6 +90,8 @@ public class PlayerControllerChat : MonoBehaviour
     }
 
 
+        
+        
     private void UpdateAnimationState()
     {
         MovementState state;
@@ -198,9 +202,14 @@ public class PlayerControllerChat : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+   public void Freeze(bool freez)
+    {
 
-
-
+        animator.SetInteger("State",(int)MovementState.Idle);
+        freezed = freez;
+        rb.velocity = Vector2.zero;
+        // TODO add more mecanic maybe
+    }
 }
 
 

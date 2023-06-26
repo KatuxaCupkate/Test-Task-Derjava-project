@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject ultaExpPrefab;
     [SerializeField] private CircleCollider2D headColl;
+
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+
     private PlayerControllerChat player;
     private PlayerLife life;
 
@@ -75,8 +79,10 @@ public class PlayerCombat : MonoBehaviour
         {
 
             animator.SetTrigger("Ulta");
+
             pivoBarScript[currentPivo].SetPivoImage(PivoBar.PivoStatus.Empty);
             borzota -= borzotaDecr;
+            CameraShakeManager.instance.CameraShake(impulseSource);
         }
 
 
@@ -114,6 +120,7 @@ public class PlayerCombat : MonoBehaviour
         {
             pivoBarScript[currentPivo].SetPivoImage(PivoBar.PivoStatus.Empty);
             borzota -= borzotaDecr;
+
             animator.SetTrigger("AttackHead");
 
         }
@@ -154,17 +161,19 @@ public class PlayerCombat : MonoBehaviour
     private void UpdateCurrentPivko(float currBorzota)
     {
 
-        if (currBorzota >= 200)
+        switch (currBorzota)
         {
-            currentPivo = 0;
-        }
-        else if (currBorzota > 100)
-        {
-            currentPivo = 1;
-        }
-        else
-        {
-            currentPivo = 2;
+            case > 200:
+                currentPivo = 0;
+                break;
+            case > 100 and <= 200:
+                currentPivo = 1;
+                break;
+            case 100 or 0:
+                currentPivo = 2;
+                break;
+            default:
+                break;
         }
 
     }

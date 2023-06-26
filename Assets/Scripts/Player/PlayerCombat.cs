@@ -34,8 +34,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private PivoBar[] pivoBarScript; // pivko referens script
 
-    private int smallDamage = 30;
-    private int ultDamage = 200;
+    private int smallDamage = 40;
+    private int ultDamage = 300;
 
     public float borzotaIncr = 20;
     public float borzotaDecr = 100;
